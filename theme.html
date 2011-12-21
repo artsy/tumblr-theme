@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!-- ART.SY Tumblr Theme -->
+<html>
+  <head>
+    <title>{Title}{block:SearchPage}-{lang:Search results for SearchQuery}{/block:SearchPage}{block:PostSummary}-{PostSummary}{/block:PostSummary}</title>
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+    <link rel="shortcut icon" href="{Favicon}" />
+    <link rel="apple-touch-icon" href="{PortraitURL-128}"/>
+    <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+
+    <link rel="stylesheet" href="normalize.css" />
+    <style>
+      h1 {
+        margin: 0;
+      }
+      body {
+        background-color: #FEFDF3;
+        color: #6a00cc;
+        font-size: 17px;
+        font-family: "AdobeGaramondProRegular",Georgia,Serif;
+      }
+      em {
+        font-family: "AdobeGaramondProItalic",Georgia,Serif;
+      }
+      a,
+      a:hover,
+      a:visited {
+        color: #6a00cc;
+      }
+      #lrg-mark {
+        background-image: url(http://static.tumblr.com/l4kolar/QMtlsiy62/artsy.png);
+        background-repeat: no-repeat;
+        height: 92px;
+        left: 40px;
+        position: fixed;
+        top: 40px;
+        width: 249px;
+      }
+      #lrg-mark span,
+      #go-to-artsy span { 
+        display: none; 
+      }
+      #go-to-artsy {
+        background-image: url(http://static.tumblr.com/l4kolar/GrMlsiy7n/go_to_artsy.png);
+        background-repeat: no-repeat;
+        bottom: 40px;
+        height: 11px;
+        position: fixed;
+        right: 40px;
+        width: 179px;
+      }
+      article {
+        margin: 170px auto;
+        width: 730px;
+      }
+      header {
+        border-bottom: 1px dotted #6a00cc;
+        border-top: 1px dotted #6a00cc;
+        display: inline-block;
+        margin-bottom: 40px;
+        width: 100%;
+      }
+      header h2 {
+        float: left;
+        font-weight: normal;
+        font-size: 16px;
+        margin: 14px 0;
+      }
+      header ul {
+        float: right;
+        list-style: none;
+        margin: 10px 0;
+      }
+      header li {
+        float: left;
+        margin-left: 5px;
+      }
+      header li a {
+        background-image: url(http://static.tumblr.com/l4kolar/j68lsiyev/twitter.png);
+        display: block;
+        height: 25px;
+        width: 25px;
+      }
+      header .facebook a {
+        background-image: url(http://static.tumblr.com/l4kolar/YYdlsiye2/fb.png);
+      }
+      section {
+        border-bottom: 1px dotted #6a00cc;
+        clear: both;
+        margin-bottom: 50px;
+        text-align: center;
+      }
+        
+      article > footer {
+        margin: 50px 240px;
+      }
+      a.boxy {
+        border: 3px solid #6a00cc;
+        display: block;
+        font-family: "ITCAvantGardeGothicStdDemi",Helvetica,Arial,Sans-Serif;
+        font-size: 14px;
+        letter-spacing: 0.2em;
+        padding: 7px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+      a.date {
+        width: 80px;
+        margin-left: -40px;
+        margin-top: -22px;
+        margin-bottom: 20px;
+        position: relative;
+        left: 50%;
+      }
+      section .media {
+        text-align: center;
+      }
+      section img {
+        height: auto;
+        width: 100%;
+      }
+      section h2 {
+        font-weight: normal;
+        font-size: 45px;
+        margin: 0;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      section p {
+        margin: 0;
+        margin-bottom: 20px;
+        text-align: left;
+        line-height: 1.6em;
+      }
+      section > footer {
+        display: block;
+        clear: both;
+        margin: 0;
+        margin-bottom: 20px;
+        width: 100%;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="lrg-mark"><span>Art.sy</span></h1>
+                
+    <article>
+      <header>
+        <h2>Inspiration from the team at <a href="http://art.sy">Art.sy</a>, a new way to discover art.</h2>    
+        <ul>
+          <li class="twitter"><a href="http://www.twitter.com/artsy"></a></li>
+          <li class="facebook"><a href="http://www.facebook.com/pages/Artsy/342443413406?sk=app_4949752878"></a></li>
+        </ul>
+      </header>
+            
+       {block:Posts}
+        <section>
+          {block:Text}
+            <a class="boxy date permalink" href="">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
+            {block:Title}<h2>{Title}</h2>{/block:Title}
+            <div class="copy">{Body}</div>
+          {/block:Text}
+          {block:Photo}
+            <div class="media"><img src="{PhotoURL-HighRes}" alt="" /></div>
+            <a class="boxy date permalink" href="">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
+            {block:Caption}
+              <p>
+                {Caption}
+              </p>
+            {/block:Caption}
+          {/block:Photo}
+          <footer>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-count="horizontal" data-via="artsy">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+            <iframe src="//www.facebook.com/plugins/like.php?href={URLEncodedPermalink}&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:auto; height:21px;" allowTransparency="true"></iframe>
+          </footer>
+        </section>
+      {/block:Posts}
+
+
+      <footer>{block:NextPost}<a href="{NextPost}" class="boxy">Load Next Posts</a>{/block:NextPost}</footer>
+    </article>
+    
+    <a id="go-to-artsy" href="http://www.art.sy" /><span>go to the art.sy website</span></a>    
+    
+  </body>
+</html>
