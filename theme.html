@@ -9,6 +9,9 @@
     <link rel="alternate" type="application/rss+xml" href="{RSS}" />
 
     <link rel="stylesheet" href="normalize.css" />
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    
     <style>
       h1 {
         margin: 0;
@@ -119,6 +122,7 @@
       section img {
         height: auto;
         width: 100%;
+        margin-bottom: 50px;
       }
       section h2 {
         font-weight: normal;
@@ -142,6 +146,24 @@
         text-align: right;
       }
     </style>
+    
+    <script type="text/javascript">
+        var fitToWindow = function() {
+            if ($(window).width() <= 1300) {
+                $("h1#lrg-mark").css("position","absolute");
+                $("a#go-to-artsy").css("position","absolute").css("bottom","auto").css("right","auto");
+            }
+            else {
+                $("h1#lrg-mark").css("position","fixed");
+                $("a#go-to-artsy").css("position","fixed").css("bottom","40px").css("right","40px");
+            }
+        }
+        $(document).ready(fitToWindow());
+        $(window).resize(function() {
+            console.log($(window).width());
+            fitToWindow();
+        });
+    </script>
   </head>
   <body>
     <h1 id="lrg-mark"><span>Art.sy</span></h1>
@@ -158,13 +180,13 @@
        {block:Posts}
         <section>
           {block:Text}
-            <a class="boxy date permalink" href="">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
+            <a class="boxy date permalink" href="">{MonthNumberWithZero}/{DayOfMonthWithZero}/{ShortYear}</a>
             {block:Title}<h2>{Title}</h2>{/block:Title}
             <div class="copy">{Body}</div>
           {/block:Text}
           {block:Photo}
             <div class="media"><img src="{PhotoURL-HighRes}" alt="" /></div>
-            <a class="boxy date permalink" href="">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
+            <a class="boxy date permalink" href="">{MonthNumberWithZero}/{DayOfMonthWithZero}/{ShortYear}</a>
             {block:Caption}
               <p>
                 {Caption}
