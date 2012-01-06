@@ -158,11 +158,8 @@
                 $("a#go-to-artsy").css("position","fixed").css("bottom","40px").css("right","40px");
             }
         }
-        $(document).ready(fitToWindow());
-        $(window).resize(function() {
-            console.log($(window).width());
-            fitToWindow();
-        });
+        $(document).ready(fitToWindow);
+        $(window).resize(fitToWindow);
     </script>
   </head>
   <body>
