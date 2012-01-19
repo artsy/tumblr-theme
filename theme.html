@@ -8,20 +8,43 @@
     <link rel="apple-touch-icon" href="{PortraitURL-128}"/>
     <link rel="alternate" type="application/rss+xml" href="{RSS}" />
 
-    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="http://static.tumblr.com/1ynwt03/lvIly0f2f/embed_font.css" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://static.tumblr.com/1ynwt03/jJfly107y/jquery.infinitescroll.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $('article').infinitescroll({
+            navSelector  : "#navigation",
+            nextSelector : "#navigation a",    
+            itemSelector : "article section",
+            loading: {
+                finishedMsg: "<em>No further posts.</em>",
+                img: "http://static.tumblr.com/1ynwt03/lPgly1xud/large_loader.gif"
+            }
+          });
+      });
+    </script>
     
     <style>
+
       h1 {
         margin: 0;
       }
       body {
         background-color: #FEFDF3;
         color: #6a00cc;
-        font-size: 17px;
-        font-family: "AdobeGaramondProRegular",Georgia,Serif;
+        font-size: 18px;
+        font-family: "AdobeGaramondPro",Georgia,Serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
       }
       em {
-        font-family: "AdobeGaramondProItalic",Georgia,Serif;
+        font-family: "AdobeGaramondPro",Georgia,Serif;
+      }
+      strong {
+        font-family: "AdobeGaramondPro",Georgia,Serif;
+        font-weight: bold;
       }
       a,
       a:hover,
@@ -33,19 +56,24 @@
         background-repeat: no-repeat;
         height: 92px;
         width: 249px;
+        margin-left: auto;
+        margin-right: auto;
       }
-      #lrg-mark span,
-      #go-to-artsy span { 
+      #lrg-mark span { 
         display: none; 
       }
       #go-to-artsy {
-        background-image: url(http://static.tumblr.com/l4kolar/GrMlsiy7n/go_to_artsy.png);
-        background-repeat: no-repeat;
         height: 11px;
         width: 179px;
-        display: block;
         float: right;
         margin-bottom: 20px;
+        display: block;
+        text-transform: uppercase;
+        font-family: "ITCAvantGardeGothicStdDemi",Helvetica,Arial,Sans-Serif;
+        font-size: 13px;
+      }
+      #go-to-artsy a {
+        text-decoration: underline;
       }
       @media screen and (min-width: 1300px) {
         #lrg-mark {
@@ -55,13 +83,14 @@
         }
         #go-to-artsy {
             position: fixed;
+            display: float;
             bottom: 40px;
             right: 40px;
         }
       }
       article {
         margin: 50px auto;
-        width: 730px;
+        width: 660px;
       }
       header {
         border-bottom: 1px dotted #6a00cc;
@@ -92,13 +121,15 @@
         width: 25px;
       }
       header .facebook a {
-        background-image: url(http://static.tumblr.com/l4kolar/YYdlsiye2/fb.png);
+        background-image: url(http://static.tumblr.com/1ynwt03/EYtly0jwn/fb.png);
+        height: 19px;
+        width: 19px;
+        margin-top: 2px;
       }
       section {
         border-bottom: 1px dotted #6a00cc;
         clear: both;
         margin-bottom: 50px;
-        text-align: center;
       }
         
       article > footer {
@@ -117,7 +148,7 @@
       }
       a.date {
         width: 80px;
-        margin-left: -40px;
+        margin-left: -50px;
         margin-top: -22px;
         margin-bottom: 20px;
         position: relative;
@@ -126,10 +157,10 @@
       section .media {
         text-align: center;
       }
-      section img {
+      section img.fill {
         height: auto;
         width: 100%;
-        margin-bottom: 50px;
+        margin-bottom: -5px;
       }
       section h2 {
         font-weight: normal;
@@ -146,11 +177,53 @@
       }
       section > footer {
         display: block;
-        clear: both;
-        margin: 0;
+        margin: 0px;
         margin-bottom: 20px;
-        width: 100%;
-        text-align: right;
+      }
+      section footer {
+        margin-bottom: 100px;
+        margin-top: 60px;
+        display: block;
+      }
+      section footer .social-media {
+        display: inline-block;
+        float: right;
+        width: 220px;
+      }
+      section ul li {
+        list-style: none;
+        text-indent: -23px;
+      }
+      section ul li:before {
+        content: "— ";
+      }
+      section .quote {
+        display: block;
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 35px;
+      }
+      section footer .source {
+        display: inline-block;
+        font-style: italic;
+        font-size: 16px;
+        margin-top: 0px;
+        margin-bottom: 30px;
+        float: left;
+        text-decoration: none;
+      }
+      section footer .source *:before {
+        text-decoration: none;
+        content: "Source: ";
+      }
+      section .quote .source {
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      section .quote .source:before {
+        content: "— ";
       }
     </style>
   </head>
@@ -168,32 +241,86 @@
             
        {block:Posts}
         <section>
+        
+        
           {block:Text}
-            <a class="boxy date permalink" href="">{MonthNumberWithZero}/{DayOfMonthWithZero}/{ShortYear}</a>
+            <a class="boxy date permalink">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
             {block:Title}<h2>{Title}</h2>{/block:Title}
             <div class="copy">{Body}</div>
+            
+            <footer>
+            {block:ContentSource}
+                <div class="source">
+                    <a class="source" href="{SourceURL}">
+                        {block:SourceLogo}
+                            <img src="{BlackLogoURL}" width={LogoWidth} height={LogoHeight} alt="{SourceTitle}" />
+                        {/block:SourceLogo}
+                        {block:NoSourceLogo}
+                            {SourceTitle}
+                        {/block:NoSourceLogo}
+                    </a>
+                </div>
+            {/block:ContentSource}
+            <div class="social-media">
+                <iframe allowtransparency="true" frameborder="0" scrolling="no" src="//platform.twitter.com/widgets/tweet_button.html?url={Permalink}&via=artsy" style="width:100px; height:20px;"></iframe>
+                <iframe src="//www.facebook.com/plugins/like.php?href={URLEncodedPermalink}&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:85px; height:21px;" allowTransparency="true"></iframe>
+            </div>
+            </footer>
           {/block:Text}
+          
           {block:Photo}
-            <div class="media"><img src="{PhotoURL-HighRes}" alt="" /></div>
-            <a class="boxy date permalink" href="">{MonthNumberWithZero}/{DayOfMonthWithZero}/{ShortYear}</a>
+            <div class="media"><img class="fill" src="{PhotoURL-HighRes}" alt="" /></div>
+            <a class="boxy date permalink">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
             {block:Caption}
               <p>
                 {Caption}
               </p>
             {/block:Caption}
+            
+            <footer>
+            {block:ContentSource}
+                <div class="source">
+                    <a class="source" href="{SourceURL}">
+                        {block:SourceLogo}
+                            <img src="{BlackLogoURL}" width={LogoWidth} height={LogoHeight} alt="{SourceTitle}" />
+                        {/block:SourceLogo}
+                        {block:NoSourceLogo}
+                            {SourceTitle}
+                        {/block:NoSourceLogo}
+                    </a>
+                </div>
+            {/block:ContentSource}
+            <div class="social-media">
+                <iframe allowtransparency="true" frameborder="0" scrolling="no" src="//platform.twitter.com/widgets/tweet_button.html?url={Permalink}&via=artsy" style="width:100px; height:20px;"></iframe>
+                <iframe src="//www.facebook.com/plugins/like.php?href={URLEncodedPermalink}&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:85px; height:21px;" allowTransparency="true"></iframe>
+            </div>
+            </footer>
           {/block:Photo}
-          <footer>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-count="horizontal" data-via="artsy">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-            <iframe src="//www.facebook.com/plugins/like.php?href={URLEncodedPermalink}&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:auto; height:21px;" allowTransparency="true"></iframe>
-          </footer>
+          
+          {block:Quote}
+            <a class="boxy date permalink">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
+            <div class="quote">
+              “{Quote}”
+              {block:Source}
+                <div class="source">{Source}</div>
+              {/block:Source}
+            </div>
+            
+            <footer>
+                <div class="social-media">
+                    <iframe allowtransparency="true" frameborder="0" scrolling="no" src="//platform.twitter.com/widgets/tweet_button.html?url={Permalink}&via=artsy" style="width:100px; height:20px;"></iframe>
+                    <iframe src="//www.facebook.com/plugins/like.php?href={URLEncodedPermalink}&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:85px; height:21px;" allowTransparency="true"></iframe>
+                </div>
+            </footer>
+
+          {/block:Quote}
+
         </section>
       {/block:Posts}
-
-
-      <footer>{block:NextPost}<a href="{NextPost}" class="boxy">Load Next Posts</a>{/block:NextPost}</footer>
     </article>
+    <div id="navigation" style="margin-top: 100px; margin-bottom: 100px; width: 660px; margin-left: auto; margin-right: auto;">{block:NextPage}<a href="{NextPage}" class="boxy">Load Next Posts</a>{/block:NextPage}</div>
     
-    <a id="go-to-artsy" href="http://www.art.sy" /><span>go to the art.sy website</span></a>    
+    <div id="go-to-artsy">go to the <a href="http://www.art.sy">art.sy</a> website</div>
     
   </body>
 </html>
