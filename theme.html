@@ -41,6 +41,7 @@
       }
       em {
         font-family: "AdobeGaramondPro",Georgia,Serif;
+        font-style: italic;
       }
       strong {
         font-family: "AdobeGaramondPro",Georgia,Serif;
@@ -50,6 +51,7 @@
       a:hover,
       a:visited {
         color: #6a00cc;
+        text-decoration: underline;
       }
       #lrg-mark {
         background-image: url(http://static.tumblr.com/l4kolar/QMtlsiy62/artsy.png);
@@ -73,6 +75,9 @@
         font-size: 13px;
       }
       #go-to-artsy a {
+        text-decoration: none;
+      }
+      #go-to-artsy a:hover {
         text-decoration: underline;
       }
       @media screen and (min-width: 1300px) {
@@ -88,10 +93,18 @@
             right: 40px;
         }
       }
-      article {
-        margin: 50px auto;
-        width: 660px;
+      @media screen and (min-width: 482px) {
+        article {
+            width: 660px;
+            margin: 50px auto;
+        }
       }
+      @media screen and (max-width: 481px) {
+         article {
+            margin: 20px;
+         }
+      }
+             
       header {
         border-bottom: 1px dotted #6a00cc;
         border-top: 1px dotted #6a00cc;
@@ -125,6 +138,32 @@
         height: 19px;
         width: 19px;
         margin-top: 2px;
+      }
+      @media screen and (max-width: 481px) {
+        header h2 {
+            text-align: center;
+        }
+        header ul {
+            float: none;
+            display: block;
+            margin-right: 100px;
+            padding-left: 85px;
+            text-align: center;
+        }
+        header li {
+            float: none;
+            clear: both;
+            display: inline-block;
+            text-align: center;
+        }
+        header li a {
+            text-align: center;
+        }
+        header .facebook a {
+            height: 22px;
+            background-repeat: no-repeat;
+            background-position: center top;
+        }
       }
       section {
         border-bottom: 1px dotted #6a00cc;
@@ -190,12 +229,20 @@
         float: right;
         width: 220px;
       }
+      section footer .social-media iframe {
+        display: block;
+        float: right;
+        margin-left: 3px;
+        margin-right: 3px;
+      }
       section ul li {
         list-style: none;
-        text-indent: -23px;
+        text-indent: -34px;
+        margin-left: -6px;
       }
       section ul li:before {
-        content: "— ";
+        content: "—";
+        margin-right: 15px;
       }
       section .quote {
         display: block;
@@ -221,9 +268,17 @@
         font-size: 18px;
         margin-top: 20px;
         margin-bottom: 20px;
+        font-style: italic;
       }
       section .quote .source:before {
         content: "— ";
+      }
+      #notes {
+          display: block;
+          margin: 10px;
+      }
+      #notes ol li {
+          border-bottom: 1px dotted #6a00cc;
       }
     </style>
   </head>
@@ -244,7 +299,7 @@
         
         
           {block:Text}
-            <a class="boxy date permalink">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
+            <a href="{Permalink}" class="boxy date permalink">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
             {block:Title}<h2>{Title}</h2>{/block:Title}
             <div class="copy">{Body}</div>
             
@@ -270,7 +325,7 @@
           
           {block:Photo}
             <div class="media"><img class="fill" src="{PhotoURL-HighRes}" alt="" /></div>
-            <a class="boxy date permalink">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
+            <a href="{Permalink}" class="boxy date permalink">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
             {block:Caption}
               <p>
                 {Caption}
@@ -298,7 +353,7 @@
           {/block:Photo}
           
           {block:Quote}
-            <a class="boxy date permalink">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
+            <a href="{Permalink}" class="boxy date permalink">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
             <div class="quote">
               “{Quote}”
               {block:Source}
@@ -314,13 +369,22 @@
             </footer>
 
           {/block:Quote}
+          
+          {block:PermalinkPage}
+            {block:PostNotes}
+                <div id="notes">
+                {NoteCountWithLabel}
+                {PostNotes}
+                </div>
+            {/block:PostNotes}
+          {/block:PermalinkPage}
 
         </section>
       {/block:Posts}
     </article>
     <div id="navigation" style="margin-top: 100px; margin-bottom: 100px; width: 660px; margin-left: auto; margin-right: auto;">{block:NextPage}<a href="{NextPage}" class="boxy">Load Next Posts</a>{/block:NextPage}</div>
     
-    <div id="go-to-artsy">go to the <a href="http://www.art.sy">art.sy</a> website</div>
+    <div id="go-to-artsy"><a href="http://www.art.sy">go to the art.sy website</a></div>
     
   </body>
 </html>
