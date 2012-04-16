@@ -53,6 +53,9 @@
         color: #6a00cc;
         text-decoration: underline;
       }
+      a.title {
+          text-decoration: none;
+      }
       #lrg-mark {
         background-image: url(http://static.tumblr.com/l4kolar/QMtlsiy62/artsy.png);
         background-repeat: no-repeat;
@@ -201,6 +204,14 @@
         width: 100%;
         margin-bottom: -5px;
       }
+      #notes img {
+          margin-left: 0;
+          margin-right: 0;
+          display: inline;
+      }
+      section footer .source img {
+          display: inline;
+      }
       section h2 {
         font-weight: normal;
         font-size: 45px;
@@ -278,15 +289,38 @@
       }
       #notes {
           display: block;
-          margin: 10px;
+          margin: 20px 0px 20px 0px;
+          font-size: 14px;
+      }
+      #notes #note-count {
+          clear: both;
+          margin-bottom: 20px;
+      }
+      #notes ol {
+          clear: both;
+          list-style: none;
+          margin-left: -40px;
       }
       #notes ol li {
-          border-bottom: 1px dotted #6a00cc;
+          margin: 5px;
       }
     </style>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-12450662-4']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
   </head>
   <body>
-    <h1 id="lrg-mark"><span>Art.sy</span></h1>
+    <h1 id="lrg-mark"><a href="http://art-sy.tumblr.com"><span>Art.sy</span></a></h1>
                 
     <article>
       <header>
@@ -303,7 +337,7 @@
         
           {block:Text}
             <a href="{Permalink}" class="boxy date permalink">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
-            {block:Title}<h2>{Title}</h2>{/block:Title}
+            {block:Title}<h2><a class="title" href="{Permalink}">{Title}</a></h2>{/block:Title}
             <div class="copy">{Body}</div>
             
             <footer>
@@ -327,7 +361,7 @@
           {/block:Text}
           
           {block:Photo}
-            <div class="media"><img class="fill" src="{PhotoURL-HighRes}" alt="" /></div>
+            <a href="{Permalink}"><div class="media"><img class="fill" src="{PhotoURL-HighRes}" alt="" /></div></a>
             <a href="{Permalink}" class="boxy date permalink">{MonthNumberWithZero}{DayOfMonthWithZero}{ShortYear}</a>
             {block:Caption}
               <p>
@@ -376,8 +410,8 @@
           {block:PermalinkPage}
             {block:PostNotes}
                 <div id="notes">
-                {NoteCountWithLabel}
-                {PostNotes}
+                  <div id="note-count">{NoteCountWithLabel}</div>
+                  {PostNotes}
                 </div>
             {/block:PostNotes}
           {/block:PermalinkPage}
