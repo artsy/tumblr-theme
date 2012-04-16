@@ -7,25 +7,7 @@
     <link rel="shortcut icon" href="{Favicon}" />
     <link rel="apple-touch-icon" href="{PortraitURL-128}"/>
     <link rel="alternate" type="application/rss+xml" href="{RSS}" />
-
-    <link rel="stylesheet" href="http://static.tumblr.com/1ynwt03/lvIly0f2f/embed_font.css" />
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script src="http://static.tumblr.com/1ynwt03/jJfly107y/jquery.infinitescroll.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-          $('article').infinitescroll({
-            navSelector  : "#navigation",
-            nextSelector : "#navigation a",    
-            itemSelector : "article section",
-            loading: {
-                finishedMsg: "<em>No further posts.</em>",
-                img: "http://static.tumblr.com/1ynwt03/lPgly1xud/large_loader.gif"
-            }
-          });
-      });
-    </script>
-    
+    <link rel="stylesheet" href="http://static.tumblr.com/1ynwt03/NgYm2bpt4/embed_font.css" />
     <style>
 
       h1 {
@@ -40,7 +22,7 @@
         text-rendering: optimizeLegibility;
       }
       em {
-        font-family: "AdobeGaramondPro",Georgia,Serif;
+        font-family: "AdobeGaramondProItalic",Georgia,Serif;
         font-style: italic;
       }
       strong {
@@ -63,6 +45,11 @@
         width: 249px;
         margin-left: auto;
         margin-right: auto;
+      }
+      #lrg-mark > a {
+        width: 100%;
+        height: 100%;
+        display: block;
       }
       #lrg-mark span { 
         display: none; 
@@ -191,7 +178,7 @@
       a.date {
         width: 80px;
         margin-left: -50px;
-        margin-top: -22px;
+        margin-top: 16px;
         margin-bottom: 20px;
         position: relative;
         left: 50%;
@@ -269,6 +256,7 @@
       }
       section footer .source {
         display: inline-block;
+        font-family: "AdobeGaramondProItalic",Georgia,Serif;
         font-style: italic;
         font-size: 16px;
         margin-top: 0px;
@@ -277,14 +265,15 @@
         text-decoration: none;
       }
       section footer .source *:before {
+        font-family: "AdobeGaramondPro",Georgia,Serif;
         text-decoration: none;
         content: "Source: ";
-        font-style: normal;
       }
       section .quote .source {
         font-size: 18px;
         margin-top: 20px;
         margin-bottom: 20px;
+        font-family: "AdobeGaramondProItalic",Georgia,Serif;
         font-style: italic;
       }
       section .quote .source:before {
@@ -308,19 +297,6 @@
           margin: 5px;
       }
     </style>
-    <script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-12450662-4']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
   </head>
   <body>
     <h1 id="lrg-mark"><a href="http://art-sy.tumblr.com"><span>Art.sy</span></a></h1>
@@ -425,6 +401,35 @@
     <div id="navigation" style="margin-top: 100px; margin-bottom: 100px; width: 660px; margin-left: auto; margin-right: auto;">{block:NextPage}<a href="{NextPage}" class="boxy">Load Next Posts</a>{/block:NextPage}</div>
     
     <div id="go-to-artsy"><a href="http://www.art.sy">go to the art.sy website</a></div>
+    
+    <div id='scripts' style='display: none'>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+      <script src="http://static.tumblr.com/1ynwt03/jJfly107y/jquery.infinitescroll.min.js" type="text/javascript"></script>
+      <script type="text/javascript">
+        $(document).ready(function() {
+            $('article').infinitescroll({
+              navSelector  : "#navigation",
+              nextSelector : "#navigation a",    
+              itemSelector : "article section",
+              loading: {
+                  finishedMsg: "<em>No further posts.</em>",
+                  img: "http://static.tumblr.com/1ynwt03/lPgly1xud/large_loader.gif"
+              }
+            });
+        });
+      </script>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12450662-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+    </div>
     
   </body>
 </html>
